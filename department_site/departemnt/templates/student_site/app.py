@@ -1,10 +1,10 @@
+import os
 from flask import Flask, render_template, request, redirect
 import psycopg2
 
 app = Flask(__name__)
 
-# Replace with the EXACT SAME Aiven Service URI (with revealed password)
-DATABASE_URL = "PASTE_YOUR_AIVEN_SERVICE_URI_HERE"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def get_db():
     return psycopg2.connect(DATABASE_URL)
